@@ -1,10 +1,17 @@
 ## This is Assignment 2 of the course R programming
-## Caching the inverse of a matrix
+## The goal is to Cache the inverse of a matrix
 
-## This function creates a special "matrix" object that can cache its inverse.
+#' This function creates a special "matrix" object that can cache its inverse.
+#' 
+#' @param x A matrix.
+#' @return A list.
+#' @examples
+#' x  <- diag(4,4)
+#' makeCacheMatrix(x)
 
 makeCacheMatrix <- function(x = matrix()) {
         inv <- NULL
+        
         set <- function(y) {
                 x <<- y
                 inv <<- NULL
@@ -20,9 +27,16 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function computes the inverse of the special "matrix" returned by makeCacheMatrix 
-## above. If the inverse has already been calculated (and the matrix has not changed), then 
-## the cachesolve should retrieve the inverse from the cache.
+#' This function computes the inverse of the special "matrix" returned by makeCacheMatrix 
+#' above. If the inverse has already been calculated (and the matrix has not changed), then 
+#' the cachesolve should retrieve the inverse from the cache.
+#' 
+#' @param x A cacche matrix returned by makeCacheMatrix
+#' @param ... parameters to pass to solve
+#' @return inverse of a matrix
+#' @example 
+#' CachedMarix <- makeCacheMatrix(x)
+#' cacheSolve(CachedMarix)
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
@@ -38,3 +52,5 @@ cacheSolve <- function(x, ...) {
         x$setInverse(inv)
         inv
 }
+
+
